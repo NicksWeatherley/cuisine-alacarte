@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'delivery_person.apps.DeliveryPersonConfig',
     'cook.apps.CookConfig',
     'django.contrib.admin',
     'django.contrib.auth',
