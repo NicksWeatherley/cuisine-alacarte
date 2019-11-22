@@ -7,9 +7,9 @@ class Cook(models.Model):
     last_name = models.CharField(max_length=30)
     ssn = models.CharField(max_length=9)
 #   where they work, will reference restaurants table
-    #restaurant = models.ForeignKey('restaurant.Restaurant')
+    restaurant = models.ForeignKey('restaurant.Restaurant', on_delete=models.CASCADE)
 #   rating (0 - 5) will reference Rating table/app
-    #rating = models.ForeignKey('ratings.Rating') # referencing model defined in different app
+    rating = models.ForeignKey('ratings.Rating', on_delete=models.CASCADE) # referencing model defined in different app
 #   if cook gets warned more than 3 times they get a warning
     warnings = models.IntegerField()
     salary = models.FloatField()
