@@ -6,5 +6,6 @@ class Manager(models.Model):
     ssn = models.CharField(max_length = 9)
     salary = models.FloatField()
 
+
     def __str__(self):
         return self.first_name + ' ' + self.last_name

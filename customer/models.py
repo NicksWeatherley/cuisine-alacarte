@@ -15,7 +15,10 @@ class Registered_Customer(Visitor):
 #   if customer gives an average rating >4 for more than 3 orders they're promoted to VIP_Customer
 #   if customer gives an average rating <2 but >1 for more than 3 orders they're demoted to Visitor
 #   if customer gives an average rating 1 then they are blacklisted
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
 
 class VIP_Customer(Registered_Customer):
     customer_status = models.CharField(max_length=10)
+
 

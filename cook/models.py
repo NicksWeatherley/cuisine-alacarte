@@ -14,6 +14,7 @@ class Cook(models.Model):
     warnings = models.IntegerField()
     salary = models.FloatField()
 
-
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
 # we should keep records of salaries, ratings, warnigns
 

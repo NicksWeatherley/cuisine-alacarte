@@ -5,3 +5,6 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.ForeignKey('ratings.Rating', on_delete=models.CASCADE)
     restaurant = models.ForeignKey('restaurant.Restaurant', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
