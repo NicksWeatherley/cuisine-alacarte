@@ -9,3 +9,6 @@ class Restaurant(models.Model):
     # I don't think we need a cook row here. cooks point to restaurants
     # We'll have to add types of customers (vip, blocked etc)
     customers = models.ManyToManyField('customer.Visitor') # we might later put this in Customer model instead
+
+    def __str__(self):
+        return self.name
