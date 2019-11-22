@@ -5,3 +5,4 @@ class Manager(models.Model):
     last_name =models.CharField(max_length = 30)
     ssn = models.CharField(max_length = 9)
     salary = models.FloatField()
+

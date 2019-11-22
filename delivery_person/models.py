@@ -12,4 +12,6 @@ class DeliveryPerson(models.Model):
     warnings = models.IntegerField()
     salary = models.FloatField()
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
 # Create your models here.
