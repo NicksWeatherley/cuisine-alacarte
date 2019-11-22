@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'items.apps.ItemsConfig',
     'restaurant.apps.RestaurantConfig',
     'customer.apps.CustomerConfig',
+    'manager.apps.ManagerConfig',
     'delivery_person.apps.DeliveryPersonConfig',
     'cook.apps.CookConfig',
     'django.contrib.admin',
