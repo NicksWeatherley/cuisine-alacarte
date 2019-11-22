@@ -1,8 +1,8 @@
 from django.db import models
 
-class Manager(models.model):
-    first_name = models.CharField(max_lenght = 20)
-    last_name =models.CharField(max_lenght = 30)
-    ssn = models.CharField(max_lenght = 9)
-    resturant = models.Foreig0nKey('restaurant.Restaurant', on_delete = models.CASCADE)
+class Manager(models.Model):
+    first_name = models.CharField(max_length = 20)
+    last_name =models.CharField(max_length = 30)
+    ssn = models.CharField(max_length = 9)
+    resturant = models.ForeignKey('restaurant.Restaurant', on_delete = models.CASCADE)
     salary = models.FloatField()
