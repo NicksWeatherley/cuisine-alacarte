@@ -31,18 +31,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'items.apps.ItemsConfig',
-    'restaurant.apps.RestaurantConfig',
-    'customer.apps.CustomerConfig',
-    'manager.apps.ManagerConfig',
-    'delivery_person.apps.DeliveryPersonConfig',
-    'cook.apps.CookConfig',
+    # Built in apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # 3rd party apps
+    'cook.apps.CookConfig',
+    'customer.apps.CustomerConfig',
+    'delivery_person.apps.DeliveryPersonConfig',
+    'items.apps.ItemsConfig',
+    'manager.apps.ManagerConfig',
+    'ratings.apps.RatingsConfig',
+    'restaurant.apps.RestaurantConfig',
     'salesperson.apps.SalespersonConfig',
 ]
 
