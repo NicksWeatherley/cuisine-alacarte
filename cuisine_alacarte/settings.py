@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'cook.apps.CookConfig',
     'customer.apps.CustomerConfig',
     'delivery_person.apps.DeliveryPersonConfig',
-    'items.apps.ItemsConfig',
+    'item.apps.ItemsConfig',
     'manager.apps.ManagerConfig',
     'ratings.apps.RatingsConfig',
     'restaurant.apps.RestaurantConfig',
