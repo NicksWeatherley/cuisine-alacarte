@@ -1,5 +1,5 @@
 from django.db import models
 
-class Rating(models.model):
+class Rating(models.Model):
     score = models.FloatField()
-    resturant = models.Foreig0nKey('restaurant.Restaurant', on_delete = models.CASCADE)
+    resturant = models.ForeignKey('restaurant.Restaurant', on_delete = models.CASCADE)
