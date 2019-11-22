@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+class Rating(models.Model):
+    score = models.FloatField()
+    resturant = models.ForeignKey('restaurant.Restaurant', on_delete = models.CASCADE)
