@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'items.apps.ItemsConfig',
+    'restaurant.apps.RestaurantConfig',
     'customer.apps.CustomerConfig',
     'delivery_person.apps.DeliveryPersonConfig',
     'cook.apps.CookConfig',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'salesperson.apps.SalespersonConfig',
 ]
 
 MIDDLEWARE = [
