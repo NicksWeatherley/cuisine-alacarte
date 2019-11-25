@@ -18,7 +18,7 @@ class Customer(models.Model):
     customer_email = models.CharField(max_length=100, blank = True, default = '')
 
     # Each customer has multiple ratings to multiple restaurants.
-    restaurant_ratings = models.ManyToManyField('ratings.Rating')
+    restaurant_ratings = models.ManyToManyField('ratings.Rating', blank = True)
     restaurant = models.ForeignKey('restaurant.Restaurant', on_delete = models.SET_NULL, null = True)
 
 
