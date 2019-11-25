@@ -1,24 +1,35 @@
 from django.db import models
 
-# Create your models here.
+class Customer(models.Model):
+    '''
+    Customer model is used for all customers in the cuisine alcarte project.
+    Default behavior is to add a visitor upon checkout with and order that was
+    completed.
+    '''
+    # Options for the customer type
+    CUSTOMER_TYPES = [
+        ('VISITOR', 'Visitor'),
+        ('REGISTERED', 'Registered'),
+        ('VIP', 'VIP'),
+    ]
+    customer_type = models.CharField(max_length = 11, choices = CUSTOMER_TYPES, default = 'VISITOR')
+    first_name = models.CharField(max_length=20, blank = True, default = '')
+    last_name = models.CharField(max_length=20, blank = True, default = '')
+    customer_email = models.CharField(max_length=100, blank = True, default = '')
 
-#Registered_Customers inherit from Visitor and VIP_Customer inherit from Registerd_Customer
-class Visitor(models.Model):
-    customer_id = models.CharField(max_length=10)
+    # Each customer has multiple ratings to multiple restaurants.
+    restaurant_ratings = models.ManyToManyField('ratings.Rating', blank = True)
+    restaurant = models.ForeignKey('restaurant.Restaurant', on_delete = models.SET_NULL, null = True)
 
-class Registered_Customer(Visitor):
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    customer_email = models.CharField(max_length=100)
-#   rating (0-5) will reference Rating table/app
-    rating = models.ForeignKey('ratings.Rating', on_delete = models.CASCADE)
-#   if customer gives an average rating >4 for more than 3 orders they're promoted to VIP_Customer
-#   if customer gives an average rating <2 but >1 for more than 3 orders they're demoted to Visitor
-#   if customer gives an average rating 1 then they are blacklisted
+
+    #TODO: Create many to many relation to ratings through delivery person
+
+    #TODO: Create many to many relation to menu item through restaurant
+    
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        if(self.customer_type == 'VISITOR'):
+            return str(self.customer_type)
 
-class VIP_Customer(Registered_Customer):
-    customer_status = models.CharField(max_length=10)
+        return self.first_name + ' ' + self.last_name
 
 
