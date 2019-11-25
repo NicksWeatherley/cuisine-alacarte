@@ -4,6 +4,7 @@ from .models import Restaurant
 from ratings.models import Rating
 from cook.models import Cook
 from delivery_person.models import DeliveryPerson
+from salesperson.models import Salesperson
 
 
 class RatingsInLine(admin.TabularInline):
@@ -26,6 +27,8 @@ class DeliveryPersonInLine(admin.TabularInline):
     max_num = 3
     extra = 1
 
+class SalesPersonInLine(admin.TabularInline):
+    model = Salesperson
 
 class RestaurantAdmin(admin.ModelAdmin):
     inlines = (
@@ -35,10 +38,11 @@ class RestaurantAdmin(admin.ModelAdmin):
 
     )
 
-    fieldsets = ((None, {
+    fieldsets = (('Info', {
         'fields': ('name', 'address', 'manager',),
         'classes': ('extrapretty'),
-    }),)
+    }),
+    ('Employees',{'fields':()}),)
 
 
 admin.site.register(Restaurant, RestaurantAdmin)
