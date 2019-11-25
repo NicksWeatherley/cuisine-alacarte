@@ -29,6 +29,9 @@ class DeliveryPersonInLine(admin.TabularInline):
 
 class SalesPersonInLine(admin.TabularInline):
     model = Salesperson
+    classes = ['collapse', ]
+    max_num = 3
+    extra = 1
 
 class RestaurantAdmin(admin.ModelAdmin):
     inlines = (
