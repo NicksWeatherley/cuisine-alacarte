@@ -37,6 +37,7 @@ class RestaurantAdmin(admin.ModelAdmin):
     inlines = (
         CookInLine,
         DeliveryPersonInLine,
+        SalesPersonInLine,
         RatingsInLine,
 
     )
