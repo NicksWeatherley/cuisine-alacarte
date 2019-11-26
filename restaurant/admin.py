@@ -13,7 +13,13 @@ class CookInLine(admin.TabularInline):
     model = Cook
     classes = ['collapse', ]
     max_num = 3
-    extra = 1
+    extra = 0
+
+    readonly_fields = ('rating', 'warnings')
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 
 class CustomerInLine(admin.TabularInline):
     model = Customer
@@ -21,12 +27,26 @@ class CustomerInLine(admin.TabularInline):
     max_num = 3
     extra = 0
 
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
 
 class DeliveryPersonInLine(admin.TabularInline):
     model = DeliveryPerson
     classes = ['collapse', ]
     max_num = 3
-    extra = 1
+    extra = 0
+
+    readonly_fields = ('warnings',)
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 class ItemsInLine(admin.TabularInline):
@@ -35,6 +55,15 @@ class ItemsInLine(admin.TabularInline):
     max_num = 3
     extra = 0
 
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
 
 class RatingsInLine(admin.TabularInline):
     model = Rating
@@ -42,12 +71,24 @@ class RatingsInLine(admin.TabularInline):
     max_num = 10
     extra = 0
 
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
 
 class SalesPersonInLine(admin.TabularInline):
     model = Salesperson
     classes = ['collapse', ]
     max_num = 3
-    extra = 1
+    extra = 0
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 class RestaurantAdmin(admin.ModelAdmin):
