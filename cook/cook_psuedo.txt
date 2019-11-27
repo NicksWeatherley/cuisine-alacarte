@@ -1,0 +1,45 @@
+
+function addMenuItem(list of items, menu item name, restaurant)
+    check list of items != 0
+    check name is != null and name is not empty
+    check restaurant != null
+    
+    
+    create new menu item w/ list of items
+    
+    add menu item to restaurant menu
+    
+funciton changeMenuItems(list of items, menu item name, restaurant)
+    check list of items != 0
+    check name is != null and name is not empty
+    check restaurant != null
+    
+    set items on menu item to items
+    
+function deleteMenuItem(menu item name, restaurant)
+    check name is != null and name is not empty
+    check restaurant != null
+    
+    if menuItem is in restaurant.menu:
+        delete menu item
+        return True
+    else
+        return False
+        
+function checkStock(item, restaurant)
+    check item != null
+    check restaurant != null
+    
+    if item is in restaurant.items
+        return remaining item count
+    else 
+        return -1
+
+function requestStock(item, restaurant)
+    check item != null
+    check restaurant != null
+    
+    if item is in restaurant.items
+        send notification to salespeople who work at restaurant to purchase more
+    else
+        log error to log
