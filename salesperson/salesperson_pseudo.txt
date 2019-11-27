@@ -30,3 +30,21 @@ function cancelOrder(order number)
             return True
             
     return False
+
+function login(salesperson, Password password, restaurant)
+    get the list of registered salespersons for restaurant
+
+    if salesperson found in the registered salespersons list
+        if password == to the password in the database
+            give user permission to access the site
+        else
+            ask to retype the password
+
+    else
+        return false 
+
+function viewAccountInfo(self)
+    if self.salesperson is logged in
+        return their profile
+    else
+        return false - salesperson is not logged in
