@@ -13,7 +13,8 @@ class Item(models.Model):
     rating = models.ForeignKey(
         'ratings.Rating',
         on_delete=models.CASCADE,
-        blank = True,
+        blank=True,
+        null=True,
     )
     restaurant = models.ForeignKey(
         'restaurant.Restaurant', null=True,
