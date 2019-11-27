@@ -56,3 +56,4 @@ class Delivery(models.Model):
         blank=True,
         default='',
     )
+
