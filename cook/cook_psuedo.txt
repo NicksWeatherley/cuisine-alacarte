@@ -9,7 +9,7 @@ function addMenuItem(list of items, menu item name, restaurant)
     
     add menu item to restaurant menu
     
-funciton changeMenuItems(list of items, menu item name, restaurant)
+function changeMenuItems(list of items, menu item name, restaurant)
     check list of items != 0
     check name is != null and name is not empty
     check restaurant != null
@@ -43,3 +43,15 @@ function requestStock(item, restaurant)
         send notification to salespeople who work at restaurant to purchase more
     else
         log error to log
+        
+function login(cook, Password password, restaurant)
+    get the list of registered cooks for restaurant
+
+    if cook found in the registered cook list
+        if password == to the password in the database
+            give user permission to access the site
+        else
+            ask to retype the password
+
+    else
+        return false
