@@ -63,7 +63,7 @@ function login(Customer customer, Password password)
             ask to retype the password
 
     else
-        return false - customer cannot login becasue they're not registered
+        return false - customer cannot login because they're not registered
 
 function viewAccountInfo(Customer customer)
     if customer is logged in
