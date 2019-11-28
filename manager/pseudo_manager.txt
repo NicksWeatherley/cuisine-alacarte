@@ -37,6 +37,14 @@ function viewEmployees(Manager manager, Employee employee)
                 get the list of salespeople
 
     return False -> Employee not found
+    
+
+function editEmployee(Manager manager, Employee employee)
+    if manager is in self.manager list
+        if employee is not null
+            return edit page with editing options
+
+    return false -> cannot edit employee
 
 
 function viewRatings(Manager manager, Ratings rating)
