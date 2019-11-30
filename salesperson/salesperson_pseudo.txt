@@ -48,3 +48,13 @@ function viewAccountInfo(self)
         return their profile
     else
         return false - salesperson is not logged in
+        
+function checkStock(item, restaurant)
+    check item != null
+    check restaurant != null
+    
+    if item is in restaurant.items
+        return remaining item count
+    else 
+        return -1
+
