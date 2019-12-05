@@ -19,5 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('register.urls')),
-    path('', include("django.contrib.auth.urls")),  # gives access to django log-in/out pages
+    path('', include('pages.urls')),
+    # gives access to django log-in/out pages
+    path('', include("django.contrib.auth.urls")),
 ]
