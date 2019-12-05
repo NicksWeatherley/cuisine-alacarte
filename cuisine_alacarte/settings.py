@@ -31,13 +31,27 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'cook.apps.CookConfig',
+    # Built in apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    
+    # 3rd party apps
+    'app_user.apps.AppUserConfig',
+    'cook.apps.CookConfig',
+    'customer.apps.CustomerConfig',
+    'delivery_person.apps.DeliveryPersonConfig',
+    'item.apps.ItemsConfig',
+    'manager.apps.ManagerConfig',
+    'pages.apps.PagesConfig',
+    'ratings.apps.RatingsConfig',
+    'register.apps.RegisterConfig',
+    'restaurant.apps.RestaurantConfig',
+    'salesperson.apps.SalespersonConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +71,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -114,8 +129,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+# user model that can be authenticated
+AUTH_USER_MODEL = 'app_user.User'
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/sta' \
+             'tic/'
+
+
+LOGIN_REDIRECT_URL = "/login"
+
+LOGOUT_REDIRECT_URL = "/"
+

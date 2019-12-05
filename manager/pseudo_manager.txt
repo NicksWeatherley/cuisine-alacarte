@@ -1,0 +1,113 @@
+function hireCandidate(Manager manager, Candidate candidate)
+     if manager is in self.manager list
+        if candidate.isApproved
+            if candidate.isCookCandidate
+                get the list of cooks
+                register the candidate as cook
+                add the candidate to the list
+                return the updated list of cooks
+            if candidate.isCookSalespersonCandidate
+                get the list of salespeople
+                register the candidate as salesperson
+                add the candidate to the list
+                return the updated list of salespeople
+
+    return False -> Error when hiring
+
+function fireEmployee(Manager manager, Employee employee)
+    if manager is in self.manager list
+        if employee is not null
+            if employee.isCook
+                get the list of cooks
+                remove the cook
+                return updated list
+            if employee.isSalesperson
+                get the list of salespeople
+                remove the salesperson
+                return the updated list
+
+    return False -> Employee not found
+
+function viewEmployees(Manager manager, Employee employee)
+    if manager is in self.manager list
+        if employee is not null
+            if employee.isCook
+                get the list of cooks
+            if employee.isSalesperson
+                get the list of salespeople
+
+    return False -> Employee not found
+    
+
+function editEmployee(Manager manager, Employee employee)
+    if manager is in self.manager list
+        if employee is not null
+            return edit page with editing options
+
+    return false -> cannot edit employee
+
+
+function viewRatings(Manager manager, Ratings rating)
+    if manager is in self.manager list
+        if ratings is not null
+            get the rating lists
+
+    return False -> cannot access the ratings
+
+
+function login(Manager manager, Password password)
+    get the list of registered managers
+
+    if manager found in the registered mananagers list
+        if password == to the password in the database
+            give manager permission to access the site
+        else
+            ask to retype the password
+
+    else
+        return manager cannot login because they're not registered
+
+
+function viewAccountInfo(Manager manager)
+    if manager is logged in
+        return their profile
+    else
+        return false - manager is not logged in
+
+
+function addCustomer(Manager manager, Customer customer)
+    if manager is in self.manager list
+        if customer is not null
+            get the list of customers
+            add customer to the list
+            return updated list
+
+    return false -> couldn't add customer
+
+
+function editCustomer(Manager manager, Customer customer)
+    if manager is in self.manager list
+        if customer is not null
+            return edit page with editing options
+
+    return false -> cannot edit customer
+
+function viewCustomer(Manager manager, Customer customer)
+    if manager is in self.manager list
+        if customer is not null
+            get the list of customers
+            if customer is in the list
+                return customer's info
+
+    return False -> Customer not found
+
+
+
+
+
+
+
+
+
+
+

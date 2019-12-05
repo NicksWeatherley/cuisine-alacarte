@@ -1,0 +1,74 @@
+This app allows the customers to see and modify their shopping carts,
+rate food and delivery people and login or create accounts
+
+
+function viewShoppingCart(Customer customer)
+    if customer is not null
+        get the shopping cart that is assigned to customer
+        return the list of items in the shopping cart or empty list if nothing is in the cart
+
+function addItemToShoppingCart(Customer customer, Item item)
+    get the shopping cart assigned to customer
+    get the list of items in the shopping cart
+    add item to the list
+    return true if added and false otherwise
+
+function editShoppingCart(Customer customer, Action action, Item item)
+    get the shopping cart that is assigned to customer
+    get the list of items in the shopping cart
+    get the specified item
+
+    if action == addItem
+        increase the count of the item
+
+    else if action == removeItem
+        decrease the count of the item
+
+    return modified list of items in the shopping cart
+
+function removeItemFromShoppingCart(Customer customer, Item item)
+    get the shopping cart that is assigned to customer
+    get the list of items in the shopping cart
+    get the specified item
+
+    if item is in the shopping cart
+        remove the item from the list
+    else
+        return false
+
+    return modified list of items in the shopping cart
+
+
+function rateFood(Customer customer, Item item)
+    get customer's order history to check if the customer ordered the item
+
+    if customer ordered and received the item
+        get item's rating (list)
+        add customer's rating to the list
+        update the rating
+
+    else
+        return false - customer cannot rate item their didn't order
+
+    return new rating
+
+
+function login(Customer customer, Password password)
+    get the list of registered users
+
+    if customer found in the registered users list
+        if password == to the password in the database
+            give user permission to access the site
+        else
+            ask to retype the password
+
+    else
+        return false - customer cannot login because they're not registered
+
+function viewAccountInfo(Customer customer)
+    if customer is logged in
+        return their profile
+    else
+        return false - customer is not logged in
+
+

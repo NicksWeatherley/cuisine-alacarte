@@ -1,0 +1,73 @@
+function viewDelivery(delivery)
+    if delivery is in self.employedRestaurant
+        if delivery.byWho == self
+            return delivery
+            
+    print not found error
+    
+function bidOnDelivery(double bid, delivery)
+    if delivery is in list of self.employedRestaurant.deliveries
+        if delivery.isOpenToBids
+            add bid to list of delivery.isOpenToBids
+            return True -> Bid added
+            
+    return False -> Error when adding bidOnDelivery
+
+function cancelDelivery(delivery)
+    if delivery is in self.employedRestaurant
+        if delivery.byWho == self and delivery.status == inprogress
+            set delivery status to 'CANCELED'
+            return True
+            
+    return False
+    
+function viewDeliveryRoute(delivery)
+    if delivery is in self.employedRestaurant
+        if delivery.byWho == self
+            return delivery.route
+    
+    print not found error
+    
+function changeDeliveryRoute(new route, delivery)
+    if delivery is in self.employedRestaurant
+        if delivery.byWho == self and delivery.status == inprogress
+            if route.destination == delivery.route.destination
+                delivery.route == route
+                return True
+                
+            else
+                print Incorrect route destination
+                
+    return False
+    
+function chooseRoute(delivery)
+    if delivery is in self.employedRestaurant
+        if delivery.byWho == self and delivery.status == inprogress
+            return list of routes w/ destination == delivery.customer.address
+    print delivery not found error
+    
+function rateCustomer(delivery, int rating)
+    if delivery is in self.employedRestaurant
+        if delivery.byWho == self and delivery.status == completed
+            add new rating to delivery.customer.ratings
+            return True
+            
+    return False
+    
+function login(deliveryperson, Password password, restaurant)
+    get the list of registered deliverypersons for restaurant
+
+    if deliveryperson found in the registered deliverypersons list
+        if password == to the password in the database
+            give user permission to access the site
+        else
+            ask to retype the password
+
+    else
+        return false 
+
+function viewAccountInfo(self)
+    if self.deliveryperson is logged in
+        return their profile
+    else
+        return false - deliveryperson is not logged in

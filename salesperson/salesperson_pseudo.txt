@@ -1,0 +1,60 @@
+function createNewOrder(item, restaurant, quantity of item)
+    check item, restaurant != null
+    check quantity >= 1
+    
+    add purchase to salesperson's list of purchases
+    if item not in restaurant.item list
+        add item and quantity to restaurant.item list
+    else
+        increase quantity of item
+        
+function viewOrder(order number)
+    if order number is in restaurant.purchases
+        if purchase was by self.salesperson
+            return purchase
+    
+    return None
+    
+function changeOrder(order number, item, quantity, restaurant)
+    if order number is in restaurant.purchases
+        if purchase was by self.salesperson
+            purchase = new purchase(item, quantity, restaurant, self)
+            return True
+            
+    return False
+    
+function cancelOrder(order number)
+    if order number is in restaurant.purchases
+        if purchase was by self.salesperson
+            set purchase status to 'CANCELLED'
+            return True
+            
+    return False
+
+function login(salesperson, Password password, restaurant)
+    get the list of registered salespersons for restaurant
+
+    if salesperson found in the registered salespersons list
+        if password == to the password in the database
+            give user permission to access the site
+        else
+            ask to retype the password
+
+    else
+        return false 
+
+function viewAccountInfo(self)
+    if self.salesperson is logged in
+        return their profile
+    else
+        return false - salesperson is not logged in
+        
+function checkStock(item, restaurant)
+    check item != null
+    check restaurant != null
+    
+    if item is in restaurant.items
+        return remaining item count
+    else 
+        return -1
+
