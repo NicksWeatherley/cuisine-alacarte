@@ -5,8 +5,7 @@
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
             {% if user.is_authenticated and user.is_customer %}
-            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
-              <h2>You are registered as a student</h2>
+              <h2>You are registered as a customer</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -24,8 +23,7 @@
                     {{ user.email }}
                 </p>
              {% elif user.is_authenticated and user.is_cook %}
-            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
-               <h2>You are registered as a mentor</h2>
+               <h2>You are registered as a cook</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -43,8 +41,7 @@
                     {{ user.email }}
                 </p>
             {% elif user.is_authenticated and user.is_manager %}
-            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
-               <h2>You are registered as a mentor</h2>
+               <h2>You are registered as a manager</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -62,8 +59,7 @@
                     {{ user.email }}
                 </p>
             {% elif user.is_authenticated and user.is_delivery_person %}
-            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
-               <h2>You are registered as a mentor</h2>
+               <h2>You are registered as a delivery person</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -81,8 +77,7 @@
                     {{ user.email }}
                 </p>
             {% elif user.is_authenticated and user.is_sales_person %}
-            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
-               <h2>You are registered as a mentor</h2>
+               <h2>You are registered as a salesperson</h2>
                 <p>
                     Username:
                     {{ user.username }}

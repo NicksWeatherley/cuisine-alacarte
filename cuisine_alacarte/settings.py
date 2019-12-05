@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'delivery_person.apps.DeliveryPersonConfig',
     'item.apps.ItemsConfig',
     'manager.apps.ManagerConfig',
+    'pages.apps.PagesConfig',
     'ratings.apps.RatingsConfig',
     'register.apps.RegisterConfig',
     'restaurant.apps.RestaurantConfig',
