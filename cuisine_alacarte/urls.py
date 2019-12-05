@@ -20,10 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('register.urls')),
     path('', include('pages.urls')),
-<<<<<<< HEAD
+
     # gives access to django log-in/out pages
     path('', include("django.contrib.auth.urls")),
-=======
-    path('', include("django.contrib.auth.urls")),  # gives access to django log-in/out pages
->>>>>>> ae54767c6b1ccc7744f46c86dade477092913e94
+
 ]

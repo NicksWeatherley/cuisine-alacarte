@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'restaurant.apps.RestaurantConfig',
     'salesperson.apps.SalespersonConfig',
-    'pages.apps.PagesConfig'
 ]
 
 MIDDLEWARE = [
