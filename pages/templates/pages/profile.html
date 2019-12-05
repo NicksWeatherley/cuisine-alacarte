@@ -1,0 +1,110 @@
+{% extends "mainpage/mainpage.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+            {% if user.is_authenticated and user.is_customer %}
+            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
+              <h2>You are registered as a student</h2>
+                <p>
+                    Username:
+                    {{ user.username }}
+                </p>
+                <p>
+                    Name:
+                    {{ user.first_name }}
+                </p>
+                <p>
+                    Last name:
+                    {{ user.last_name }}
+                </p>
+                <p>
+                    Email:
+                    {{ user.email }}
+                </p>
+             {% elif user.is_authenticated and user.is_cook %}
+            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
+               <h2>You are registered as a mentor</h2>
+                <p>
+                    Username:
+                    {{ user.username }}
+                </p>
+                <p>
+                    Name:
+                    {{ user.first_name }}
+                </p>
+                <p>
+                    Last name:
+                    {{ user.last_name }}
+                </p>
+                <p>
+                    Email:
+                    {{ user.email }}
+                </p>
+            {% elif user.is_authenticated and user.is_manager %}
+            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
+               <h2>You are registered as a mentor</h2>
+                <p>
+                    Username:
+                    {{ user.username }}
+                </p>
+                <p>
+                    Name:
+                    {{ user.first_name }}
+                </p>
+                <p>
+                    Last name:
+                    {{ user.last_name }}
+                </p>
+                <p>
+                    Email:
+                    {{ user.email }}
+                </p>
+            {% elif user.is_authenticated and user.is_delivery_person %}
+            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
+               <h2>You are registered as a mentor</h2>
+                <p>
+                    Username:
+                    {{ user.username }}
+                </p>
+                <p>
+                    Name:
+                    {{ user.first_name }}
+                </p>
+                <p>
+                    Last name:
+                    {{ user.last_name }}
+                </p>
+                <p>
+                    Email:
+                    {{ user.email }}
+                </p>
+            {% elif user.is_authenticated and user.is_sales_person %}
+            <img class="rounded-circle account-img" src="{{ request.user.userprofile.image.url }}">
+               <h2>You are registered as a mentor</h2>
+                <p>
+                    Username:
+                    {{ user.username }}
+                </p>
+                <p>
+                    Name:
+                    {{ user.first_name }}
+                </p>
+                <p>
+                    Last name:
+                    {{ user.last_name }}
+                </p>
+                <p>
+                    Email:
+                    {{ user.email }}
+                </p>
+            {% else %}
+            <p>Login<a href="/login"> here</a> </p>
+            {% endif %}
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+{% endblock content %}

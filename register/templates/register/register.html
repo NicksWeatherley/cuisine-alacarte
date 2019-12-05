@@ -1,0 +1,12 @@
+{% block content %}
+  <h2>Sign up</h2>
+  <p class="lead">Select below the type of account you want to create</p>
+    <a href="{% url 'customer_register' %}" class="btn btn-student btn-lg" role="button">Customer</a>
+    <a href="{% url 'cook_register' %}" class="btn btn-student btn-lg" role="button">Cook</a>
+    <a href="{% url 'delivery_person_register' %}" class="btn btn-student btn-lg" role="button">Delivery Person</a>
+    <a href="{% url 'sales_person_register' %}" class="btn btn-student btn-lg" role="button">Salesperson</a>
+    <a href="{% url 'manager_register' %}" class="btn btn-student btn-lg" role="button">Manager</a>
+{% endblock %}
+
+
+

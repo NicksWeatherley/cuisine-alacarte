@@ -1,4 +1,5 @@
 from django.db import models
+from app_user.models import User
 
 class Customer(models.Model):
     '''
@@ -12,6 +13,7 @@ class Customer(models.Model):
         ('REGISTERED', 'Registered'),
         ('VIP', 'VIP'),
     ]
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     customer_type = models.CharField(max_length = 11, choices = CUSTOMER_TYPES, default = 'VISITOR')
     first_name = models.CharField(max_length=20, blank = True, default = '')
     last_name = models.CharField(max_length=20, blank = True, default = '')
