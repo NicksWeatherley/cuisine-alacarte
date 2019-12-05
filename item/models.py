@@ -23,3 +23,12 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Dish(models.Model):
+    name = models.CharField(max_length=25)
+    items = models.ManyToManyField(Item, blank=True)
+    price = models.FloatField()
+    restaurants = models.ManyToManyField('restaurant.Restaurant')
+
+
