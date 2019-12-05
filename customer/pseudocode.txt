@@ -72,4 +72,3 @@ function viewAccountInfo(Customer customer)
         return false - customer is not logged in
 
 
-

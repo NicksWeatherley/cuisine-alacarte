@@ -1,0 +1,14 @@
+{% block title %}Create an Account{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="POST" class="form-group">
+        <h3>Sign up as a user</h3>
+        {% csrf_token %}
+        {{ user_form|crispy}}
+        <button type="submit" class="btn btn-success" >Sign up</button>
+    </form>
+{% endblock %}
+
+
+
+
