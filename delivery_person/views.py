@@ -20,7 +20,6 @@ def get_bid(request, purchase_id):
     if request.method == 'POST':
         form = BidForm(request.POST)
         if form.is_valid():
-            print('\n\n\n\n\n\n\n\n\n\n\n\n')
             _process_bid(form.cleaned_data['bid'], purchase_id)
             return HttpResponseRedirect('/deliveryperson/deliverylist')
 
@@ -33,6 +32,5 @@ def get_bid(request, purchase_id):
 def _process_bid(bid, purchase_id):
     delivery = Delivery.objects.all()[purchase_id - 1]
     delivery.bid = bid
-    delivery.satus = 2
+    delivery.status = 2
     delivery.save()
-    print('\n\n%.2f\n\n' % Delivery.objects.all()[purchase_id - 1].bid )
