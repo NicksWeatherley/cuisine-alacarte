@@ -19,7 +19,7 @@ class DeliveryPerson(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
     )
-#   rating (0 - 5) will reference Rating table/app
+    # rating (0 - 5) will reference Rating table/app
     # TODO: Ratings object related to person at restaurant
     # rating = models.ManyToManyField(
     #     'ratings.Rating', through='restaurant.Restaurant')

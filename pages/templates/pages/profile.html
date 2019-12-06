@@ -43,6 +43,13 @@
                     Email:
                     {{ user.email }}
                 </p>
+                <p>
+                    You work at:
+                    {{ request.user.cook.restaurant }}
+                </p>
+                <p>
+                     <a href="/cook_menu" class="nav-item nav-link active"> View menu of {{ request.user.cook.restaurant }}</a>
+                </p>
             {% elif user.is_authenticated and user.is_manager %}
                <h2>You are registered as a manager</h2>
                 <p>
