@@ -1,0 +1,17 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    <!-- NOTE: for listviews list must be called object_list -->
+    {% for purchase in object_list %}
+    <li>
+        <a href="{% url 'salesperson:purchase_detail' purchase.id%}">{{ purchase }}</a>
+    </li>
+    {% empty %}
+    <p>
+        Nothing here
+    </p>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
