@@ -7,7 +7,6 @@ from django.views.generic.list import ListView
 
 from salesperson.models import Purchase, Salesperson
 
-# TODO: Get current logged in user data to get salesperson data
 @method_decorator([login_required], name='dispatch')
 class PurchaseListView(ListView):
     model = Purchase
