@@ -19,7 +19,7 @@
             <td align='center' nowrap>{{ delivery.get_status_display}}</td>
             
             {% if delivery.status == 1 or delivery.status == 2%}
-            <td align='center' nowrap><a href='/'>Bid</a></td>
+            <td align='center' nowrap><a href="{% url 'delivery_person:get_bid' delivery.id %}">Bid</a></td>
             {% elif delivery.status == 3 %}
             <td align='center' nowrap><a href='/'>Cancel</a></td>
             {% elif delivery.status == 4 and delivery.rating == None %}

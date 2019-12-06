@@ -40,6 +40,7 @@ class Delivery(models.Model):
         (4, 'Completed')
     ]
     status = models.PositiveIntegerField(choices = STATUSES, default = 1)
+    bid = models.FloatField(default = -1)
 
     who_delivered = models.ForeignKey(
         DeliveryPerson,
