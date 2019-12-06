@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .views import PurchaseListView
+from .views import DeliveryListView
 
 urlpatterns = [
-    path('salesperson/purchaselist', PurchaseListView.as_view(), name='purchase_list'),
+    path('deliveryperson/deliverylist', DeliveryListView.as_view(), name='delivery_list'),
 ]

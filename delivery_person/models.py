@@ -45,12 +45,14 @@ class Delivery(models.Model):
         DeliveryPerson,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
     )
 
     to_customer = models.ForeignKey(
         'customer.Customer',
         on_delete=models.SET_NULL,
-        null=True, blank=True,
+        null=True,
+         blank=True,
     )
 
     rating = models.ForeignKey(

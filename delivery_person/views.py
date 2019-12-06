@@ -8,9 +8,9 @@ from django.views.generic.list import ListView
 from .models import DeliveryPerson, Delivery
 
 @method_decorator([login_required], name='dispatch')
-class PurchaseListView(ListView):
+class DeliveryListView(ListView):
     model = Delivery
 
     def get_queryset(self, **kwargs):
         user = DeliveryPerson.objects.filter(user=self.request.user.id)[0]
-        return user.purchase_set.all()
+        return user.delivery_set.all()
