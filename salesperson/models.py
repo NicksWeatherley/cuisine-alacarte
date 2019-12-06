@@ -42,4 +42,4 @@ class Purchase(models.Model):
     )
 
     def __str__(self):
-        return 'of %s' % self.item.name
+        return '%s' % self.item.name
