@@ -32,18 +32,28 @@ class DeliveryPerson(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-
 class Delivery(models.Model):
+    STATUSES = [
+        (1, 'New'),
+        (2, 'Open To Bid'),
+        (3, 'Active'),
+        (4, 'Completed')
+    ]
+    status = models.PositiveIntegerField(choices = STATUSES, default = 1)
+    bid = models.FloatField(default = -1)
+
     who_delivered = models.ForeignKey(
         DeliveryPerson,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
     )
 
     to_customer = models.ForeignKey(
         'customer.Customer',
         on_delete=models.SET_NULL,
-        null=True, blank=True,
+        null=True,
+         blank=True,
     )
 
     rating = models.ForeignKey(
@@ -58,4 +68,3 @@ class Delivery(models.Model):
         blank=True,
         default='',
     )
-

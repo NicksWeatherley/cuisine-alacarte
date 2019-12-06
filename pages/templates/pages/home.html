@@ -9,11 +9,19 @@
                     </span>
                 </li>
                 <li class='menu-item'>
+                    {% if user.is_authenticated %}
+                    <a href='/logout'>
+                        <span>
+                            Logout
+                        </span>
+                    </a>
+                    {% else %}
                     <a href='/login'>
                         <span>
                             Login
                         </span>
                     </a>
+                    {% endif %}
                 </li>
             </ul>
         </div>

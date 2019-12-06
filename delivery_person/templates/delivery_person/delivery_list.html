@@ -1,0 +1,41 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+        <tr>
+            <td align='center' nowrap>Delivery Number</td>
+            <td align='center' nowrap>Assigned</td>
+            <td align='center' nowrap>Address</td>
+            <td align='center' nowrap>Status</td>
+            <td align='center' nowrap>Options</td>
+        </tr>
+        <!-- NOTE: for listviews list must be called object_list -->
+        {% for delivery in object_list %}
+        <tr>
+            <td align='center' nowrap>{{ delivery.id }}</td>
+            <td align='center' nowrap>{{ delivery.who_delivered }} </td>
+            <td align='center' nowrap>{{ delivery.to_customer.address }}</td>
+            <td align='center' nowrap>{{ delivery.get_status_display}}</td>
+            
+            {% if delivery.status == 1 or delivery.status == 2%}
+            <td align='center' nowrap><a href="{% url 'delivery_person:get_bid' delivery.id %}">Bid</a></td>
+            {% elif delivery.status == 3 %}
+            <td align='center' nowrap><a href='/'>Cancel</a></td>
+            {% elif delivery.status == 4 and delivery.rating == None %}
+            <td align='center' nowrap><a href='/'>Rate</a></td>
+            {% else %}
+            <td align='center' nowrap>None</td>
+            {% endif %}
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td>
+                Nothing Here.
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</ul>
+{% endblock content %}

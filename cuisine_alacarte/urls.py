@@ -21,7 +21,11 @@ urlpatterns = [
     path('', include('register.urls')),
     path('', include('pages.urls')),
 
-    re_path('', include(('salesperson.urls','salesperson'), namespace = 'salesperson')),
+    re_path('', include(('delivery_person.urls', 'delivery_person'),
+                        namespace='delivery_person')),
+
+    re_path('', include(('salesperson.urls', 'salesperson'),
+                        namespace='salesperson')),
     path('', include('cook.urls')),
 
     # gives access to django log-in/out pages
