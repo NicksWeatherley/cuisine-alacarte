@@ -25,6 +25,16 @@ class Salesperson(models.Model):
 
 
 class Purchase(models.Model):
+    total_cost = models.FloatField(
+        validators=[MinValueValidator(0.01)],
+        default = 0.01,
+    )
+
+    quantity = models.IntegerField(
+        validators=[MinValueValidator(1)],
+        default = 1,
+    )
+
     item = models.ForeignKey(
         'item.item',
         null=True,

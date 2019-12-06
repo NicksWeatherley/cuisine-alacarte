@@ -15,8 +15,3 @@ class PurchaseListView(ListView):
     def get_queryset(self, **kwargs):
         user = Salesperson.objects.filter(user=self.request.user.id)[0]
         return user.purchase_set.all()
-
-
-def purchase_detail(request, purchase_id):
-    question = get_object_or_404(Purchase, pk=purchase_id)
-    return render(request, 'salesperson/purchase_detail.html')
