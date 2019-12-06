@@ -10,7 +10,7 @@ class Restaurant(models.Model):
     # We'll have to add types of customers (vip, blocked etc)
     #customers = models.ManyToManyField('customer.Visitor') # we might later put this in Customer model instead
     ratings = models.ManyToManyField('ratings.Rating', blank = True)
-    menu = models.ForeignKey('item.Dish', on_delete=models.CASCADE)
+    menu = models.ForeignKey('item.Dish', on_delete=models.CASCADE, null=True)
     #customers = models.ManyToManyField('customer.Customer', blank = True)
     def __str__(self):
         return self.name
