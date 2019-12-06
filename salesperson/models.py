@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from app_user.models import User
 
+
 class Salesperson(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=20)
