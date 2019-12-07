@@ -19,11 +19,7 @@ class DeliveryPerson(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
     )
-    # rating (0 - 5) will reference Rating table/app
-    # TODO: Ratings object related to person at restaurant
-    # rating = models.ManyToManyField(
-    #     'ratings.Rating', through='restaurant.Restaurant')
-#   if cook gets warned more than 3 times they get a warning
+
     warnings = models.PositiveIntegerField(
         validators=[MaxValueValidator(3)],
         default=0,
@@ -56,6 +52,7 @@ class Delivery(models.Model):
          blank=True,
     )
 
+    # User will rate delivery after its status has hit 4
     rating = models.ForeignKey(
         'ratings.rating',
         on_delete=models.SET_NULL,
@@ -63,6 +60,7 @@ class Delivery(models.Model):
         blank=True,
     )
 
+    # Notes about order, IE no plastic forks, etc
     notes = models.CharField(
         max_length=100,
         blank=True,
