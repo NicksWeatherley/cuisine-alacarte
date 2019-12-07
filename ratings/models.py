@@ -10,7 +10,7 @@ class Rating(models.Model):
         )
 
     # Keeping this here as not to force clear migrations or DB, but not needed
-    resturant = models.ForeignKey(
+    restaurant = models.ForeignKey(
         "restaurant.Restaurant",
         on_delete=models.SET_NULL,
         null=True, blank=True,
