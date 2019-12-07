@@ -21,12 +21,16 @@ urlpatterns = [
     path('', include('register.urls')),
     path('', include('pages.urls')),
 
+    # Using re_path due to reverse lookup error
     re_path('', include(('delivery_person.urls', 'delivery_person'),
                         namespace='delivery_person')),
     re_path('', include(('manager.urls', 'manager'),
                         namespace='manager')),
+    re_path('', include(('ratings.urls', 'ratings'),
+                        namespace='ratings')),
     re_path('', include(('salesperson.urls', 'salesperson'),
                         namespace='salesperson')),
+
     path('', include('cook.urls')),
 
     # gives access to django log-in/out pages

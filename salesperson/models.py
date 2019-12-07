@@ -18,8 +18,6 @@ class Salesperson(models.Model):
         on_delete=True,
     )
 
-    # TODO: Add relation to items purchased
-
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
