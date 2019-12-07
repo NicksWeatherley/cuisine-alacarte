@@ -10,6 +10,8 @@ class Item(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(0.01)],
     )
+
+    # Used for when cook rates an item
     rating = models.ForeignKey(
         'ratings.Rating',
         on_delete=models.CASCADE,
@@ -29,6 +31,15 @@ class Dish(models.Model):
     name = models.CharField(max_length=25)
     items = models.ManyToManyField(Item, blank=True)
     price = models.FloatField()
+
     restaurants = models.ManyToManyField('restaurant.Restaurant')
+
+    # Rating is different than item rating as user rates a dish
+    rating = models.ForeignKey(
+        'ratings.Rating',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
 
 

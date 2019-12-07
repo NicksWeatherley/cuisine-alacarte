@@ -27,15 +27,17 @@ class Customer(models.Model):
     customer_email = models.CharField(max_length=100, blank=True, default="")
     address = models.CharField(max_length=100, blank=True, default="NOTSET")
 
-    # Each customer has multiple ratings to multiple restaurants.
-    restaurant_ratings = models.ManyToManyField("ratings.Rating", blank=True,)
     restaurant = models.ForeignKey(
         "restaurant.Restaurant", on_delete=models.SET_NULL, null=True,
     )
 
-    # TODO: Create many to many relation to ratings through delivery person
-
-    # TODO: Create many to many relation to menu item through restaurant
+    # User gets rated by delivery person
+    rating = models.ForeignKey(
+        'ratings.Rating',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         if self.customer_type == "VISITOR":
