@@ -13,10 +13,19 @@ from cook.models import Cook
 from item.models import Item, Dish
 
 @method_decorator([login_required], name='dispatch')
-class RatingListView(ListView):
+class UserRatingListView(ListView):
     model = Rating
 
     def get_queryset(self, **kwargs):
         querry_type = type(None)
         if(querry_type == type(None)):
             pass
+
+class ItemRatingListView(ListView):
+    model = Rating
+
+    def get_queryset(self, **kwargs):
+        print(self.kwargs['item_id'])
+        print('\n\n\n\n\n')
+        ritem = Item.objects.get(id=self.kwargs['item_id'])
+        return ritem.rating_set.objects.all()
