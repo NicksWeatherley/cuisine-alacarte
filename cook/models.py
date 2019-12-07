@@ -12,10 +12,6 @@ class Cook(models.Model):
 #   where they work, will reference restaurants table
     restaurant = models.ForeignKey('restaurant.Restaurant', on_delete=models.SET_NULL, null = True)
 
-#   rating (0 - 5) will reference Rating
-#   TODO: Change this relation to be ratings.Ratings through  restaurant -> items
-    rating = models.ForeignKey('ratings.Rating', on_delete=models.SET_NULL, null = True, blank = True)
-
 #   if cook gets warned more than 3 times they get a warning
     warnings = models.PositiveIntegerField(validators = [MaxValueValidator(3)], default = 0)
 
