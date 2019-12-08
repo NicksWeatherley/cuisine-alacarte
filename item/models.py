@@ -11,13 +11,6 @@ class Item(models.Model):
         validators=[MinValueValidator(0.01)],
     )
 
-    # Used for when cook rates an item
-    rating = models.ForeignKey(
-        'ratings.Rating',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-    )
     restaurant = models.ForeignKey(
         'restaurant.Restaurant', null=True,
         on_delete=models.SET_NULL,
@@ -48,3 +41,4 @@ class Dish(models.Model):
         blank=True,
         on_delete=models.SET_NULL,
     )
+

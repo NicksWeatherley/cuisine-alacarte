@@ -52,14 +52,6 @@ class Delivery(models.Model):
          blank=True,
     )
 
-    # User will rate delivery after its status has hit 4
-    rating = models.ForeignKey(
-        'ratings.rating',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-    )
-
     # Notes about order, IE no plastic forks, etc
     notes = models.CharField(
         max_length=100,

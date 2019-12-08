@@ -30,15 +30,7 @@ class Customer(models.Model):
     restaurant = models.ForeignKey(
         "restaurant.Restaurant", on_delete=models.SET_NULL, null=True,
     )
-
-    # User gets rated by delivery person
-    rating = models.ForeignKey(
-        'ratings.Rating',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-    )
-
+    
     def __str__(self):
         if self.customer_type == "VISITOR":
             return str(self.customer_type)

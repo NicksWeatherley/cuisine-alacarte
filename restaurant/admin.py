@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 from .models import Restaurant
-from ratings.models import Rating
 from cook.models import Cook
 from delivery_person.models import DeliveryPerson
 from salesperson.models import Salesperson
