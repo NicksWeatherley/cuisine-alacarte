@@ -22,6 +22,8 @@ urlpatterns = [
     path('', include('pages.urls')),
 
     # Using re_path due to reverse lookup error
+    re_path('', include(('customer.urls', 'customer'),
+                        namespace='customer')),
     re_path('', include(('delivery_person.urls', 'delivery_person'),
                         namespace='delivery_person')),
     re_path('', include(('manager.urls', 'manager'),

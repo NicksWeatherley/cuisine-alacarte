@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -7,10 +7,30 @@ from django.views.generic.list import ListView
 from django.contrib.auth import get_user_model
 
 from .models import ItemRating, CustomerRating, DeliveryRating, DishRating
+from .forms import RateForm
+
 from customer.models import Customer
 from delivery_person.models import Delivery
 from cook.models import Cook
 from item.models import Item, Dish
+
+
+def getCustomerRating(request, customer_id):
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            _process_customer_rating(
+                form.cleaned_data['bid'], form.cleaned_data['notes'], customer_id)
+            return HttpResponseRedirect('/deliveryperson/deliverylist')
+
+    else:
+        form = RateForm()
+
+    return render(request, 'rating/rate_form.html', {'form': form})
+
+def _process_customer_rating(bid, notes, id):
+    pass
+
 
 class ItemRatingListView(ListView):
     model = ItemRating
@@ -37,6 +57,7 @@ class DeliveryRatingListView(ListView):
     def get_queryset(self, **kwargs):
         cust = Delivery.objects.get(id=self.kwargs['item_id'])
         return cust.deliveryrating_set.all()
+
 
 class DishRatingListView(ListView):
     model = DishRating

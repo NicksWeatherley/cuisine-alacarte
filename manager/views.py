@@ -15,6 +15,4 @@ class CustomerListView(ListView):
 
     def get_queryset(self, **kwargs):
         restaurant = Manager.objects.filter(user=self.request.user.id)[0].restaurant_set.all()[0]
-        print(restaurant.customer_set.all())
-        print('\n\n')
         return restaurant.customer_set.all()
