@@ -9,13 +9,13 @@ from django.contrib.auth import get_user_model
 from .models import ItemRating, CustomerRating, DeliveryRating, DishRating
 from .forms import RateForm
 
-from customer.models import Customer
+from customer.models import Customer, Order
 from delivery_person.models import Delivery
 from cook.models import Cook
 from item.models import Item, Dish
 
 
-def getCustomerRating(request, customer_id):
+def RateCustomer(request, customer_id):
     if request.method == 'POST':
         form = RateForm(request.POST)
         if form.is_valid():
@@ -28,8 +28,30 @@ def getCustomerRating(request, customer_id):
 
     return render(request, 'rating/rate_form.html', {'form': form})
 
-def _process_customer_rating(bid, notes, id):
+def _process_customer_rating(bid, notes, customer_id):
     pass
+
+def RateDish(request, dish_id):
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            _process_dish_rating(
+                form.cleaned_data['bid'], form.cleaned_data['notes'], dish_id)
+            return HttpResponseRedirect('/customer/history')
+
+    else:
+        form = RateForm()
+
+    return render(request, 'ratings/rate_form.html', {'form': form})
+
+def _process_dish_rating(rating, notes, dish_id):
+    order = Order.objects.get(id = dish_id)
+    for dish in order.dishes.all():
+        rating = DishRating(score = rating, note = notes, item = dish)
+        rating.save()
+    order.status = 6
+    order.save()
+
 
 
 class ItemRatingListView(ListView):

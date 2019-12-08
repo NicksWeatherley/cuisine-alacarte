@@ -45,6 +45,7 @@ class Order(models.Model):
         (3, "Out for Delivery"),
         (4, "Completed"),
         (5, "Cancelled"),
+        (6, "Rated")
     ]
 
     status = models.PositiveIntegerField(choices=STATUSES, default=1)

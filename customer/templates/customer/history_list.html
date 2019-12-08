@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
     {% if object_list is not empty %}
-    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+    <table border="0" cellspacing="0" cellpadding="8" width="640" align="left">
         <tr>
             <td align='center' nowrap>From</td>
             <td align='center' nowrap>Amount</td>
@@ -16,7 +16,13 @@
             <td align='center' nowrap>{{ order.restaurant }}</td>
             <td align='center' nowrap>Secret</td>
             <td align='center' nowrap>{{ order.dishes.all | length }}</td>
-            <td align='center' nowrap>Not Today Sorry</td>
+            {% if order.status == 4 %}
+            <td align='center' nowrap><a href = {% url 'ratings:rate_dish' order.id %}>Rate</a></td>
+            {% elif order.status < 6 %}
+            <td align='center' nowrap>{{ order.get_status_display }}</td>
+            {% else %}
+            <td align='center' nowrap>Rated</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>
