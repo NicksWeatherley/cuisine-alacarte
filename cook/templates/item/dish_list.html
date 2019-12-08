@@ -1,0 +1,34 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+        <tr>
+            <td align='center' nowrap>Dish Name</td>
+            <td align='center' nowrap>Ingredients</td>
+            <td align='center' nowrap>Price</td>
+            <td align='center' nowrap>Restaurant</td>
+        </tr>
+        <!-- NOTE: for listviews list must be called object_list -->
+        {% for dish in object_list %}
+        <tr>
+            <td align='center' nowrap>{{ dish.name }}</td>
+            <td align='center' nowrap>
+                {% for item in dish.items.all %}
+                   <p>{{ item.name }} (${{ item.price }}) </p>
+                {% endfor %}
+            </td>
+            <td align='center' nowrap>${{ dish.price }}</td>
+            <td align='center' nowrap>{{ dish.cook.restaurant.name}}</td>
+        </tr>
+
+        {% empty %}
+        <p>
+            Nothing Here.
+        </p>
+        {% endfor %}
+    </table>
+</ul>
+
+{% endblock content %}
+

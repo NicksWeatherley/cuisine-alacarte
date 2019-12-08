@@ -42,4 +42,9 @@ class Dish(models.Model):
         null=True,
     )
 
-
+    cook = models.ForeignKey(
+        'cook.Cook',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )

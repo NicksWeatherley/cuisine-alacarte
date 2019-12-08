@@ -38,12 +38,14 @@ class Purchase(models.Model):
         null=True,
         on_delete=models.SET_NULL,
     )
+
     purchaser = models.ForeignKey(
         Salesperson,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
     )
+
     restaurant = models.ForeignKey(
         'restaurant.Restaurant',
         null=True,

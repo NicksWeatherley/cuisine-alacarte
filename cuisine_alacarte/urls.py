@@ -30,8 +30,8 @@ urlpatterns = [
                         namespace='ratings')),
     re_path('', include(('salesperson.urls', 'salesperson'),
                         namespace='salesperson')),
-
-    path('', include('cook.urls')),
+    re_path('', include(('cook.urls', 'cook'),
+                        namespace='cook')),
 
     # gives access to django log-in/out pages
     path('', include("django.contrib.auth.urls")),
