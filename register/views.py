@@ -101,3 +101,4 @@ def sales_person_register(request):
         employee_form = EmployeeRegistrationForm()
     return render(request, "register/sales_person_register.html", {"employee_form": employee_form})
 
+

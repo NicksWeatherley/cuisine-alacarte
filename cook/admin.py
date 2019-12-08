@@ -4,4 +4,3 @@ from .models import Cook
 
 admin.site.register(Cook)
 
-

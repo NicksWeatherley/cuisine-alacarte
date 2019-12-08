@@ -27,3 +27,18 @@ class Dish(models.Model):
 
     restaurants = models.ManyToManyField('restaurant.Restaurant')
 
+    # Rating is different than item rating as user rates a dish
+    rating = models.ForeignKey(
+        'ratings.Rating',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
+    cook = models.ForeignKey(
+        'cook.Cook',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+

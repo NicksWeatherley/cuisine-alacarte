@@ -16,6 +16,7 @@ class DeliveryListView(ListView):
         user = DeliveryPerson.objects.filter(user=self.request.user.id)[0]
         return user.delivery_set.all()
 
+
 def get_bid(request, purchase_id):
     if request.method == 'POST':
         form = BidForm(request.POST)
@@ -28,6 +29,7 @@ def get_bid(request, purchase_id):
         form = BidForm()
 
     return render(request, 'delivery_person/bid_form.html', {'form': form})
+
 
 def _process_bid(bid, purchase_id):
     delivery = Delivery.objects.all()[purchase_id - 1]

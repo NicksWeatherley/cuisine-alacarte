@@ -1,6 +1,9 @@
+{% extends "pages/home.html" %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
+    <h2>Login</h2>
     <form method="post" class="from-group">
         {% csrf_token %}
     <!--display the form -->
