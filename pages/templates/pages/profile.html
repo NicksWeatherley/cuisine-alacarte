@@ -8,7 +8,7 @@
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
             {% if user.is_authenticated and user.is_customer %}
-              <h2>You are registered as a Customer</h2>
+              <h2 align="center">You are registered as a Customer</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -26,7 +26,11 @@
                     {{ user.email }}
                 </p>
              {% elif user.is_authenticated and user.is_cook %}
-               <h2>You are registered as a Cook</h2>
+               <h2 align="center">You are registered as a Cook</h2>
+                <p>
+                    ID:
+                    {{ user.id }}
+                </p>
                 <p>
                     Username:
                     {{ user.username }}
@@ -51,7 +55,7 @@
                      <a href="/cook/dishlist" class="nav-item nav-link active"> View menu of {{ request.user.cook.restaurant }}</a>
                 </p>
             {% elif user.is_authenticated and user.is_manager %}
-               <h2>You are registered as a Manager</h2>
+               <h2 align="center">You are registered as a Manager</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -69,7 +73,7 @@
                     {{ user.email }}
                 </p>
             {% elif user.is_authenticated and user.is_delivery_person %}
-               <h2>You are registered as a Delivery Person</h2>
+               <h2 align="center">You are registered as a Delivery Person</h2>
                 <p>
                     Username:
                     {{ user.username }}
@@ -91,7 +95,7 @@
                     {{ request.user.deliveryperson.restaurant }}
                 </p>
             {% elif user.is_authenticated and user.is_sales_person %}
-               <h2>You are registered as a Salesperson</h2>
+               <h2 align="center">You are registered as a Salesperson</h2>
                 <p>
                     Username:
                     {{ user.username }}
