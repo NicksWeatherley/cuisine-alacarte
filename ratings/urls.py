@@ -3,6 +3,13 @@ from django.urls import path
 import ratings.views as view
 
 urlpatterns = [
+    # Path to rate something
+    path('rate/customer/<int:customer_id>', view.RateCustomer, name = 'get_customer_rating'),
+    path('rate/delivery/<int:delivery_id>', view.RateDelivery, name = 'rate_delivery'),
+    path('rate/dish/<int:dish_id>', view.RateDish, name = 'rate_dish'),
+    # path('rate/item/<int:item_id>', getItemRating, name = 'get_item_rating'),
+
+    # Below is the paths to view all the different ratings
     path('ratings/Customer/<int:item_id>',
          view.CustomerRatingListView.as_view(), name='customer_rating_list'),
     path('ratings/Delivery/<int:item_id>',

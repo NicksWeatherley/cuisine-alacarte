@@ -2,6 +2,7 @@ from django.db import models
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from app_user.models import User
+from customer.models import Order
 
 
 class DeliveryPerson(models.Model):
@@ -50,6 +51,13 @@ class Delivery(models.Model):
         on_delete=models.SET_NULL,
         null=True,
          blank=True,
+    )
+
+    purchase = models.OneToOneField(
+        Order,
+        on_delete=models.SET_NULL,
+        null = True,
+        blank = True,
     )
 
     # Notes about order, IE no plastic forks, etc

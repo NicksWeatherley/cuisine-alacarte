@@ -1,6 +1,18 @@
 from django.contrib import admin
 from .models import Cook
-# Model is shown under restaurant
+from item.models import Dish
 
-admin.site.register(Cook)
 
+class DishInLine(admin.TabularInline):
+    model = Dish
+    classes = ['collapse', ]
+    max_num = 3
+
+
+class CookAdmin(admin.ModelAdmin):
+    inlines = [
+        DishInLine,
+    ]
+
+
+admin.site.register(Cook, CookAdmin)

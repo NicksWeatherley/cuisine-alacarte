@@ -1,5 +1,7 @@
 from django.db import models
 
+from delivery_person.models import Delivery
+
 
 class ItemRating(models.Model):
     score = models.FloatField()
@@ -26,7 +28,7 @@ class CookRating(models.Model):
         blank=True,
         default="",
         )
-    item = models.ForeignKey('cook.Cook', on_delete=models.SET_NULL, null=True)
+    cook = models.ForeignKey('cook.Cook', on_delete=models.SET_NULL, null=True)
 
 class DeliveryRating(models.Model):
     score = models.FloatField()
@@ -35,7 +37,7 @@ class DeliveryRating(models.Model):
         blank=True,
         default="",
         )
-    item = models.ForeignKey('delivery_person.Delivery', on_delete=models.SET_NULL, null=True)
+    delivery = models.OneToOneField(Delivery, on_delete=models.SET_NULL, null=True)
 
 class CustomerRating(models.Model):
     score = models.FloatField()
@@ -44,4 +46,4 @@ class CustomerRating(models.Model):
         blank=True,
         default="",
         )
-    item = models.ForeignKey('customer.Customer', on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey('customer.Customer', on_delete=models.SET_NULL, null=True)

@@ -27,7 +27,7 @@
                         {% if user.is_cook %}
                           <a href="/cook/dishlist" class="nav-item nav-link">View Menu</a>
                         {% elif user.is_customer %}
-                            <a href="/" class="nav-item nav-link">Order History</a>
+                            <a href="/customer/history" class="nav-item nav-link">Order History</a>
                         {% elif user.is_delivery_person %}
                             <a href="/deliveryperson/deliverylist" class="nav-item nav-link">View Deliveries</a>
                         {% elif user.is_manager %}

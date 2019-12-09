@@ -11,6 +11,7 @@ from customer.models import Customer
 @method_decorator([login_required], name='dispatch')
 class CustomerListView(ListView):
     model = Customer
+    template_name = 'manager/customer_list.html'
 
     def get_queryset(self, **kwargs):
         restaurant = Manager.objects.filter(user=self.request.user.id)[0].restaurant_set.all()[0]

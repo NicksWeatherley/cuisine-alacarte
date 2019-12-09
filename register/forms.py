@@ -18,6 +18,7 @@ class EmployeeRegistrationForm(UserCreationForm):
     except OperationalError:
         restaurant = forms.CharField(max_length=20, required=False)
 
+  
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ["username", "email", "first_name", "last_name", "password1", "password2", "restaurant"]
