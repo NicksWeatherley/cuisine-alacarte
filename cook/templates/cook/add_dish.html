@@ -4,8 +4,9 @@
 
 {% block content %}
 <form method="POST">
+    <h3 align="center">Add new dish to the menu:</h3>
     {% csrf_token %}
-    {{ form | crispy}}
+    {{ form|crispy }}
     <input type="submit" value="Submit">
 </form>
 {% endblock content %}

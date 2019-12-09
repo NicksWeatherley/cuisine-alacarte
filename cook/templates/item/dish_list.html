@@ -21,7 +21,6 @@
             <td align='center' nowrap>${{ dish.price }}</td>
             <td align='center' nowrap>{{ dish.cook.restaurant.name}}</td>
         </tr>
-
         {% empty %}
         <p>
             Nothing Here.
@@ -29,6 +28,10 @@
         {% endfor %}
     </table>
 </ul>
-
+<p align='center'>
+    <a  href="{% url 'cook:get_new_dish' user.cook.id %}">Add new dish to the menu</a>
+</p>
+<p align='center'>
+    <a  href="{% url 'cook:get_dishes_to_remove' user.cook.id %}">Remove dishes from the menu</a>
+</p>
 {% endblock content %}
-

@@ -1,0 +1,14 @@
+{% extends "pages/home.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Select a dish you want to remove from the menu:</h3>
+    <p align="center" >
+        {% csrf_token %}
+        {{ form|crispy }}
+    </p>
+    <input type="submit" value="Submit">
+</form>
+{% endblock content %}
