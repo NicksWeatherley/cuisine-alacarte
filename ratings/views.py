@@ -26,10 +26,12 @@ def RateCustomer(request, customer_id):
     else:
         form = RateForm()
 
-    return render(request, 'rating/rate_form.html', {'form': form})
+    return render(request, 'ratings/rate_form.html', {'form': form})
 
 def _process_customer_rating(rating, notes, customer_id):
-    pass
+    customer = Customer.objects.get(id=customer_id)
+    rating = CustomerRating(score = rating, note = notes, customer = customer)
+    rating.save()
 
 def RateDelivery(request, delivery_id):
     if request.method == 'POST':
