@@ -20,7 +20,7 @@ def RateCustomer(request, customer_id):
         form = RateForm(request.POST)
         if form.is_valid():
             _process_customer_rating(
-                form.cleaned_data['bid'], form.cleaned_data['notes'], customer_id)
+                form.cleaned_data['rating'], form.cleaned_data['notes'], customer_id)
             return HttpResponseRedirect('/deliveryperson/deliverylist')
 
     else:
@@ -28,15 +28,33 @@ def RateCustomer(request, customer_id):
 
     return render(request, 'rating/rate_form.html', {'form': form})
 
-def _process_customer_rating(bid, notes, customer_id):
+def _process_customer_rating(rating, notes, customer_id):
     pass
+
+def RateDelivery(request, delivery_id):
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            _process_delivery_rating(
+                form.cleaned_data['rating'], form.cleaned_data['notes'], delivery_id)
+            return HttpResponseRedirect('/customer/history')
+
+    else:
+        form = RateForm()
+
+    return render(request, 'ratings/rate_form.html', {'form': form})
+
+def _process_delivery_rating(rating, notes, delivery_id):
+    order = Order.objects.get(id = delivery_id)
+    rating = DeliveryRating(score = rating, note = notes, delivery = order.delivery)
+    rating.save()
 
 def RateDish(request, dish_id):
     if request.method == 'POST':
         form = RateForm(request.POST)
         if form.is_valid():
             _process_dish_rating(
-                form.cleaned_data['bid'], form.cleaned_data['notes'], dish_id)
+                form.cleaned_data['rating'], form.cleaned_data['notes'], dish_id)
             return HttpResponseRedirect('/customer/history')
 
     else:

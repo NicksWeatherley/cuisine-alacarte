@@ -8,7 +8,8 @@
             <td align='center' nowrap>From</td>
             <td align='center' nowrap>Amount</td>
             <td align='center' nowrap># of Items</td>
-            <td align='center' nowrap>Rating</td>
+            <td align='center' nowrap>Rate Dishs</td>
+            <td align='center' nowrap>Was Delivered</td>
         </tr>
         <!-- NOTE: for listviews list must be called object_list -->
         {% for order in object_list %}
@@ -16,12 +17,21 @@
             <td align='center' nowrap>{{ order.restaurant }}</td>
             <td align='center' nowrap>Secret</td>
             <td align='center' nowrap>{{ order.dishes.all | length }}</td>
+
             {% if order.status == 4 %}
             <td align='center' nowrap><a href = {% url 'ratings:rate_dish' order.id %}>Rate</a></td>
             {% elif order.status < 6 %}
             <td align='center' nowrap>{{ order.get_status_display }}</td>
             {% else %}
             <td align='center' nowrap>Rated</td>
+            {% endif %}
+
+            {% if order.delivery and not order.delivery.deliveryrating%}
+            <td align='center' nowrap><a href = {% url 'ratings:rate_delivery' order.id %}>Yes</a></td>
+            {% elif order.delivery and order.delivery.deliveryrating%}
+            <td align='center' nowrap>Rated</td>
+            {% else %}
+            <td align='center' nowrap>Pickup</td>
             {% endif %}
         </tr>
         {% endfor %}

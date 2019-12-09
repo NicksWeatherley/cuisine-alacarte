@@ -5,7 +5,7 @@ import ratings.views as view
 urlpatterns = [
     # Path to rate something
     path('rate/customer/<int:customer_id>', view.RateCustomer, name = 'get_customer_rating'),
-    # path('rate/delivery/<int:delivery_id>', getDeliveryRating, name = 'get_delivery_rating'),
+    path('rate/delivery/<int:delivery_id>', view.RateDelivery, name = 'rate_delivery'),
     path('rate/dish/<int:dish_id>', view.RateDish, name = 'rate_dish'),
     # path('rate/item/<int:item_id>', getItemRating, name = 'get_item_rating'),
 

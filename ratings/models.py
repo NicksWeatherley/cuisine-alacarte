@@ -1,5 +1,7 @@
 from django.db import models
 
+from delivery_person.models import Delivery
+
 
 class ItemRating(models.Model):
     score = models.FloatField()
@@ -35,7 +37,7 @@ class DeliveryRating(models.Model):
         blank=True,
         default="",
         )
-    delivery = models.ForeignKey('delivery_person.Delivery', on_delete=models.SET_NULL, null=True)
+    delivery = models.OneToOneField(Delivery, on_delete=models.SET_NULL, null=True)
 
 class CustomerRating(models.Model):
     score = models.FloatField()

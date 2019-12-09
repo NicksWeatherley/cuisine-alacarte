@@ -8,7 +8,7 @@ class RateForm(forms.Form):
         (4,'4'),
         (5,'5'),
     ]
-    bid = forms.ChoiceField(
+    rating = forms.ChoiceField(
         choices=CHOICES,
     )
     notes = forms.CharField(max_length=120)
