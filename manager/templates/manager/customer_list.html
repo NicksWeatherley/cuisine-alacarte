@@ -9,17 +9,23 @@
             <td align='center' nowrap>Type</td>
             <td align='center' nowrap>Orders</td>
             <td align='center' nowrap>Ratings</td>
+            <td align='center' nowrap></td>
         </tr>
         <!-- NOTE: for listviews list must be called object_list -->
         {% for customer in object_list %}
         <tr>
             <td align='center' nowrap>{{ customer }}</td>
-            <td align='center' nowrap>{{ customer.get_customer_type_display }} </td>
+            <td align='center' nowrap>{{ customer.get_status }} </td>
             <td align='center' nowrap>{{ customer.delivery_set.all | length }}</td>
             {% if customer.rating_set.all  is not empty %}
             <td align='center' nowrap><a href="{% url 'ratings:customer_rating_list' customer.id %}">Ratings</a></td>
             {% else %}
             <td align='center' nowrap>None</td>
+            {% endif %}
+            {% if customer.customer_type == 0 %}
+            <td align='center' nowrap></td>
+            {% else %}
+            <td align='center' nowrap><a href="{% url 'customer:edit_customer_type' customer.id %}">Edit</a></td>
             {% endif %}
         </tr>
         {% endfor %}
