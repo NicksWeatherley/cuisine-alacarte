@@ -78,7 +78,7 @@ def RateItem(request, item_id):
         if form.is_valid():
             _process_item_rating(
                 form.cleaned_data['rating'], form.cleaned_data['notes'], item_id)
-            return HttpResponseRedirect('/Cook/dishlist')
+            return HttpResponseRedirect('/item/cook_viewlist')
 
     else:
         form = RateForm()
