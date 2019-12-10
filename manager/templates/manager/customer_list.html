@@ -15,7 +15,7 @@
         {% for customer in object_list %}
         <tr>
             <td align='center' nowrap>{{ customer }}</td>
-            <td align='center' nowrap>{{ customer.customer_type }} </td>
+            <td align='center' nowrap>{{ customer.get_status }} </td>
             <td align='center' nowrap>{{ customer.delivery_set.all | length }}</td>
             {% if customer.rating_set.all  is not empty %}
             <td align='center' nowrap><a href="{% url 'ratings:customer_rating_list' customer.id %}">Ratings</a></td>

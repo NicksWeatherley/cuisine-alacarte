@@ -33,10 +33,14 @@ class Customer(models.Model):
     )
     
     def __str__(self):
-        if self.customer_type == "VISITOR":
+        if self.customer_type == 0:
             return str(self.customer_type)
 
         return self.first_name + " " + self.last_name
+
+    @property
+    def get_status(self):
+        return Customer.CUSTOMER_TYPES[int(self.customer_type) ][1]
 
 
 class Order(models.Model):
