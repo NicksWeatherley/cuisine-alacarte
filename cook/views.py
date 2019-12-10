@@ -42,13 +42,15 @@ def get_new_dish(request, cook_id):
 def _add_new_dish(name, price, items, cook_id):
     cook = Cook.objects.all()[cook_id - 1]
     restaurant = cook.restaurant
-    new_dish = Dish.objects.create(name=name, price=price, cook=cook, restaurant=restaurant)
+    new_dish = Dish.objects.create(name=name, price=price, cook=cook)
 
     for form_item in items:
         item = Item.objects.all()[int(form_item.id) - 1]
         new_dish.items.add(item)
 
     new_dish.save()
+    restaurant.dish_set.add(new_dish)
+    restaurant.save()
 
 
 def get_dishes_to_remove(request, cook_id):
