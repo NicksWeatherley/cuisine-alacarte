@@ -14,9 +14,10 @@ class Customer(models.Model):
 
     # Options for the customer type
     CUSTOMER_TYPES = [
-        ("VISITOR", "Visitor"),
-        ("REGISTERED", "Registered"),
-        ("VIP", "VIP"),
+        (0, "Visitor"),
+        (1, "Registered"),
+        (2, "VIP"),
+        (3, 'Blacklisted'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     customer_type = models.CharField(
