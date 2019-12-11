@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 
+
 from .models import Customer
 
 @method_decorator([login_required], name='dispatch')
@@ -15,3 +16,6 @@ class CustomerListView(ListView):
     def get_queryset(self, **kwargs):
         user = Customer.objects.get(user = self.request.user.id)
         return user.order_set.all()
+
+
+

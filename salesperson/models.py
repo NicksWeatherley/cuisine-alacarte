@@ -15,7 +15,7 @@ class Salesperson(models.Model):
     restaurant = models.ForeignKey(
         'restaurant.Restaurant',
         null=True,
-        on_delete=True,
+        on_delete=models.SET_NULL,
     )
 
     def __str__(self):
