@@ -3,7 +3,6 @@
 {% block content %}
 <ul>
     {% if object_list is not empty %}
-    {% texttospeech "From, Amount, Number of Items, Rate Dishes, Was Delivered" as test%}
     <table border="0" cellspacing="0" cellpadding="8" width="640" align="left">
         <tr>
             <td align='center' nowrap>From</td>
@@ -18,7 +17,7 @@
             <td align='center' nowrap>{{ order.restaurant }}</td>
             <td align='center' nowrap>Secret</td>
             <td align='center' nowrap>{{ order.dishes.all | length }}</td>
-            {% texttospeech order.dishes.all %}
+           
 
             {% if order.status == 4 %}
             <td align='center' nowrap><a href = {% url 'ratings:rate_dish' order.id %}>Rate</a></td>
@@ -44,4 +43,5 @@
     </p>
     {% endif %}
 </ul>
+{% texttospeech "customer/history_list.html" %}
 {% endblock content %}
