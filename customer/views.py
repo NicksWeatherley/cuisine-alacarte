@@ -19,9 +19,6 @@ class CustomerListView(ListView):
         return user.order_set.all()
 
 
-<<<<<<< HEAD
-
-=======
 def EditCustomerType(request, customer_id):
     if request.method == 'POST':
         form = EditCustomerTypeForm(request.POST)
@@ -41,4 +38,3 @@ def _process_customer_rating(choice, customer_id):
     print('\n\n\n\n' + choice)
     customer.customer_type = choice
     customer.save()
->>>>>>> 01bb9bc8e48f5751385ad460c3a3a5ebe22c806c
