@@ -10,6 +10,10 @@
             {% if user.is_authenticated and user.is_customer %}
               <h2 align="center">You are registered as a Customer</h2>
                 <p>
+                    ID:
+                    {{ user.id }}
+                </p>
+                <p>
                     Username:
                     {{ user.username }}
                 </p>

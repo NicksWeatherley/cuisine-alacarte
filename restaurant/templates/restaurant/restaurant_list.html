@@ -1,0 +1,36 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+        <tr>
+            <td align='center' nowrap>Restaurant Name</td>
+            <td align='center' nowrap>Address</td>
+            <td align='center' nowrap>Manager></td>
+            <td align='center' nowrap>Menu</td>
+            <td align='center' nowrap>Place Order</td>
+        </tr>
+        <!-- NOTE: for listviews list must be called object_list -->
+        {% for restaurant in object_list %}
+        <tr>
+            <td align='center' nowrap>{{ restaurant.name }}</td>
+            <td align='center' nowrap>{{ restaurant.address }}</td>
+            <td align='center' nowrap>{{ restaurant.manager }}</td>
+            <td align='center' nowrap>
+                {% for dish in restaurant.dish_set.all %}
+                    {{ dish }} ${{ dish.price }},
+                {% endfor %}
+            </td>
+            <td align='center' nowrap>
+                <a href="{% url 'customer:get_dishes_to_order' %}">Order from {{ restaurant.name }}</a>
+            </td>
+        </tr>
+        {% empty %}
+        <p>
+            Nothing Here.
+        </p>
+        {% endfor %}
+    </table>
+</ul>
+
+{% endblock content %}

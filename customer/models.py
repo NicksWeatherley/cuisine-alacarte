@@ -61,3 +61,4 @@ class Order(models.Model):
     customer = models.ForeignKey(
         "customer.Customer", on_delete=models.SET_NULL, null=True,
     )
+
