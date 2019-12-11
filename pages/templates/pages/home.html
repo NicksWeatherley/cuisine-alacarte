@@ -32,6 +32,7 @@
                             <a href="/deliveryperson/deliverylist" class="nav-item nav-link">View Deliveries</a>
                         {% elif user.is_manager %}
                             <a href="/manager/customerlist" class="nav-item nav-link">View Customers</a>
+                            <a href="{% url 'manager:employee_list'%}" class="nav-item nav-link">View Employees</a>
                         {% elif user.is_sales_person %}
                             <a href="/salesperson/purchaselist" class="nav-item nav-link">View Purchase List</a>
                         {% endif %}
