@@ -7,7 +7,7 @@ urlpatterns = [
     path('rate/customer/<int:customer_id>', view.RateCustomer, name = 'rate_customer'),
     path('rate/delivery/<int:delivery_id>', view.RateDelivery, name = 'rate_delivery'),
     path('rate/dish/<int:dish_id>', view.RateDish, name = 'rate_dish'),
-    # path('rate/item/<int:item_id>', getItemRating, name = 'get_item_rating'),
+    path('rate/item/<int:item_id>', view.RateItem, name = 'rate_item'),
 
     # Below is the paths to view all the different ratings
     path('ratings/Customer/<int:item_id>',

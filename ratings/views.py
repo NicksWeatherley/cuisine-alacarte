@@ -72,6 +72,23 @@ def _process_dish_rating(rating, notes, dish_id):
     order.status = 6
     order.save()
 
+def RateItem(request, item_id):
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            _process_item_rating(
+                form.cleaned_data['rating'], form.cleaned_data['notes'], item_id)
+            return HttpResponseRedirect('/item/cook_viewlist')
+
+    else:
+        form = RateForm()
+
+    return render(request, 'ratings/rate_form.html', {'form': form})
+
+def _process_item_rating(rating, notes, item_id):
+    item = Item.objects.get(id=item_id)
+    rating = ItemRating(score = rating, note = notes, item = item)
+    rating.save()
 
 
 class ItemRatingListView(ListView):
