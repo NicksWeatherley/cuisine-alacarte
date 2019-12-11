@@ -1,7 +1,9 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from app_user.models import User
+
 # Create your models here.
+
 
 class Cook(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -11,10 +13,6 @@ class Cook(models.Model):
 
 #   where they work, will reference restaurants table
     restaurant = models.ForeignKey('restaurant.Restaurant', on_delete=models.SET_NULL, null = True)
-
-#   rating (0 - 5) will reference Rating
-#   TODO: Change this relation to be ratings.Ratings through  restaurant -> items
-    rating = models.ForeignKey('ratings.Rating', on_delete=models.SET_NULL, null = True, blank = True)
 
 #   if cook gets warned more than 3 times they get a warning
     warnings = models.PositiveIntegerField(validators = [MaxValueValidator(3)], default = 0)

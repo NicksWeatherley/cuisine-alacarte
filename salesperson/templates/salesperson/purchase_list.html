@@ -1,0 +1,28 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+        <tr>
+            <td align='center' nowrap>Item Name</td>
+            <td align='center' nowrap>Item Cost</td>
+            <td align='center' nowrap>Quantity</td>
+            <td align='center' nowrap>Restaurant</td>
+        </tr>
+        <!-- NOTE: for listviews list must be called object_list -->
+        {% for purchase in object_list %}
+        <tr>
+            <td align='center' nowrap>{{ purchase }}</td>
+            <td align='center' nowrap>${{ purchase.total_cost }} </td>
+            <td align='center' nowrap>{{ purchase.quantity }}</td>
+            <td align='center' nowrap>{{ purchase.restaurant.name}}</td>
+        </tr>
+
+        {% empty %}
+        <p>
+            Nothing Here.
+        </p>
+        {% endfor %}
+    </table>
+</ul>
+{% endblock content %}

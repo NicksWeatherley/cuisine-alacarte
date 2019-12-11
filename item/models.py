@@ -10,12 +10,7 @@ class Item(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(0.01)],
     )
-    rating = models.ForeignKey(
-        'ratings.Rating',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-    )
+
     restaurant = models.ForeignKey(
         'restaurant.Restaurant', null=True,
         on_delete=models.SET_NULL,
@@ -29,6 +24,23 @@ class Dish(models.Model):
     name = models.CharField(max_length=25)
     items = models.ManyToManyField(Item, blank=True)
     price = models.FloatField()
+
     restaurants = models.ManyToManyField('restaurant.Restaurant')
 
+    # Rating is different than item rating as user rates a dish
+    # rating = models.ForeignKey(
+    #     'ratings.Rating',
+    #     on_delete=models.CASCADE,
+    #     blank=True,
+    #     null=True,
+    # )
 
+    cook = models.ForeignKey(
+        'cook.Cook',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+
+    def __str__(self):
+        return self.name

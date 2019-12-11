@@ -1,0 +1,27 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    {% if object_list is not empty %}
+    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+        <tr>
+            <td align='center' nowrap>Rating</td>
+            <td align='center' nowrap>Score</td>
+            <td align='center' nowrap>Note</td>
+        </tr>
+        <!-- NOTE: for listviews list must be called object_list -->
+        {% for item_rating in object_list %}
+        <tr>
+            <td align='center' nowrap>{{ item_rating.id }}</td>
+            <td align='center' nowrap>{{ item_rating.score }} </td>
+            <td align='center' nowrap>{{ item_rating.note }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>
+        Nothing Here.
+    </p>
+    {% endif %}
+</ul>
+{% endblock content %}

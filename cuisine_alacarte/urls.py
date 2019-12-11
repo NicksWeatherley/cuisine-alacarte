@@ -14,12 +14,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('register.urls')),
     path('', include('pages.urls')),
+
+    # Using re_path due to reverse lookup error
+    re_path('', include(('customer.urls', 'customer'),
+                        namespace='customer')),
+    re_path('', include(('delivery_person.urls', 'delivery_person'),
+                        namespace='delivery_person')),
+    re_path('', include(('item.urls', 'item'),
+                        namespace='item')),
+    re_path('', include(('manager.urls', 'manager'),
+                        namespace='manager')),
+    re_path('', include(('ratings.urls', 'ratings'),
+                        namespace='ratings')),
+    re_path('', include(('salesperson.urls', 'salesperson'),
+                        namespace='salesperson')),
+    re_path('', include(('cook.urls', 'cook'),
+                        namespace='cook')),
 
     # gives access to django log-in/out pages
     path('', include("django.contrib.auth.urls")),

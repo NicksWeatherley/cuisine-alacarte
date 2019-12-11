@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 from .models import Restaurant
-from ratings.models import Rating
 from cook.models import Cook
 from delivery_person.models import DeliveryPerson
 from salesperson.models import Salesperson
@@ -15,7 +14,7 @@ class CookInLine(admin.TabularInline):
     max_num = 3
     extra = 0
 
-    readonly_fields = ('rating', 'warnings')
+    readonly_fields = ('warnings',)
 
     def has_change_permission(self, request, obj=None):
         return False
@@ -64,23 +63,6 @@ class ItemsInLine(admin.TabularInline):
     def has_add_permission(self, request, obj=None):
         return False
 
-
-class RatingsInLine(admin.TabularInline):
-    model = Rating
-    classes = ['collapse', ]
-    max_num = 10
-    extra = 0
-
-    def has_change_permission(self, request, obj=None):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_add_permission(self, request, obj=None):
-        return False
-
-
 class SalesPersonInLine(admin.TabularInline):
     model = Salesperson
     classes = ['collapse', ]
@@ -98,7 +80,6 @@ class RestaurantAdmin(admin.ModelAdmin):
         SalesPersonInLine,
         ItemsInLine,
         CustomerInLine,
-        RatingsInLine,
     )
 
     fieldsets = (('Contact Info', {

@@ -1,0 +1,12 @@
+{% extends "pages/home.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Add new dish to the menu:</h3>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock content %}

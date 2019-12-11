@@ -1,0 +1,40 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<ul>
+    <table border="1" cellspacing="0" cellpadding="8" width="640" align="left">
+        <tr>
+            <td align='center' nowrap>Dish Name</td>
+            <td align='center' nowrap>Ingredients</td>
+            <td align='center' nowrap>Price</td>
+            <td align='center' nowrap>Restaurant</td>
+        </tr>
+        <!-- NOTE: for listviews list must be called object_list -->
+        {% for dish in object_list %}
+        <tr>
+            <td align='center' nowrap>{{ dish.name }}</td>
+            <td align='center' nowrap>
+                {% for item in dish.items.all %}
+                   <p>{{ item.name }} (${{ item.price }}) </p>
+                {% endfor %}
+            </td>
+            <td align='center' nowrap>${{ dish.price }}</td>
+            <td align='center' nowrap>{{ dish.cook.restaurant.name}}</td>
+        </tr>
+        {% empty %}
+        <p>
+            Nothing Here.
+        </p>
+        {% endfor %}
+    </table>
+</ul>
+<p align='center'>
+    <a  href="{% url 'cook:get_new_dish' user.cook.id %}">Add new dish to the menu</a>
+</p>
+<p align='center'>
+    <a  href="{% url 'cook:get_dishes_to_remove' user.cook.id %}">Remove dishes from the menu</a>
+</p>
+<p align='center'>
+    <a href = "{% url 'item:view_cook_item_list'%}">View Items</a>
+</p>
+{% endblock content %}

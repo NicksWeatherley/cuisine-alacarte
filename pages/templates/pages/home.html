@@ -1,25 +1,75 @@
 <!DOCTYPE html>
-
-<body>
-    <header>
-        <div class='container'>
-            <ul class='menu menu-left'>
-                <li class='menu-item'>
-                    <span>
-                        Home
-                    </span>
-                </li>
-                <li class='menu-item'>
-                    <a href='/login'>
-                        <span>
-                            Login
-                        </span>
-                    </a>
-                </li>
-            </ul>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Cuisine A La Carte</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            .bs-example{
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="bs-example">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <a href="#" class="navbar-brand">Cuisine A La Carte</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% if user.is_authenticated %}
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/profile" class="nav-item nav-link">Profile</a>
+                        {% if user.is_cook %}
+                          <a href="/cook/dishlist" class="nav-item nav-link">View Menu</a>
+                        {% elif user.is_customer %}
+                            <a href="/customer/history" class="nav-item nav-link">Order History</a>
+                        {% elif user.is_delivery_person %}
+                            <a href="/deliveryperson/deliverylist" class="nav-item nav-link">View Deliveries</a>
+                        {% elif user.is_manager %}
+                            <a href="/manager/customerlist" class="nav-item nav-link">View Customers</a>
+                            <a href="{% url 'manager:employee_list'%}" class="nav-item nav-link">View Employees</a>
+                        {% elif user.is_sales_person %}
+                            <a href="/salesperson/purchaselist" class="nav-item nav-link">View Purchase List</a>
+                        {% endif %}
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        {% if user.is_customer %}
+                          <a href="/" class="nav-item nav-link">Shopping Cart</a>
+                        {% endif %}
+                        <a href="/logout" class="nav-item nav-link">Log out</a>
+                    </div>
+                </div>
+            {% else %}
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="#" class="nav-item nav-link active">About Us</a>
+                    <a href="#" class="nav-item nav-link active">Restaurants</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a href="/login" class="nav-item nav-link">Log in</a>
+                    <a href="/register" class="nav-item nav-link">Register</a>
+                </div>
+            </div>
+            {% endif %}
+        </nav>
+    </div>
+    <div id="content", name="content", class="main">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
-    </header>
-    {% block content %}
-    {% endblock %}
-</body>
+    </div>
+    </body>
+
+</html>
+
+
+
 
