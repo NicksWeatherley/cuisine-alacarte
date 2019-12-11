@@ -34,6 +34,9 @@
 <p align='center'>
     <a  href="{% url 'cook:get_dishes_to_remove' user.cook.id %}">Remove dishes from the menu</a>
 </p>
+<p align='center'>
+    <a href = "{% url 'item:view_cook_item_list'%}">View Items</a>
+</p>
 {% endblock content %}
 
 

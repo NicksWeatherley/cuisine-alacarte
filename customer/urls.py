@@ -5,7 +5,11 @@ from .views import get_dishes_to_order, view_shopping_cart
 
 urlpatterns = [
     path('customer/history', view.CustomerListView.as_view(), name='view_history'),
+
     path('customer/createorder', get_dishes_to_order, name='get_dishes_to_order'),
     path('customer/shoppingcart', view_shopping_cart, name='view_shopping_cart')
+
+    path('edit/customer/<int:customer_id>', view.EditCustomerType, name = 'edit_customer_type'),
+
 ]
 

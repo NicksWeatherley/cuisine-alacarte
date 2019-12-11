@@ -1,0 +1,88 @@
+{% extends "pages/home.html" %}
+
+{% block content %}
+<h2 align='center'>Cooks</h2>
+{% if restaurant.cook_set.all is not empty %}
+<ul>
+    <table border="1" cellspacing="0" cellpadding="4" width="700" align="center">
+        <tr>
+            <td align='center' nowrap>Name</td>
+            <td align='center' nowrap>Salary</td>
+            <td align='center' nowrap>Dishes</td>
+            <!-- <td align='center' nowrap>Score</td> -->
+            <td align='center' nowrap>Warnings</td>
+        </tr>
+        {% for cook in  restaurant.cook_set.all%}
+        <tr>
+            <td align='center' nowrap>{{ cook }}</td>
+            <td align='center' nowrap><a href="{% url 'manager:cook_salary_change' cook.id %}">${{ cook.salary | floatformat:2 }}</a></td>
+            <td align='center' nowrap>{{ cook.dish_set.all | length }}</td>
+            <!-- <td align='center' nowrap>TODO</td> -->
+            <td align='center' nowrap>{{ cook.warnings }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</ul>
+{% else %}
+<p align=center>No Cooks</p>
+{% endif %}
+
+<br></br>
+<h2 align='center'>Delivery People</h2>
+{% if restaurant.deliveryperson_set.all is not empty %}
+<ul>
+
+    <table border="1" cellspacing="0" cellpadding="4" width="700" align="center">
+        <tr>
+            <td align='center' nowrap>Name</td>
+            <td align='center' nowrap>Salary</td>
+            <td align='center' nowrap>Deliveries</td>
+            <!-- <td align='center' nowrap>Score</td> -->
+            <td align='center' nowrap>Warnings</td>
+        </tr>
+        {% for deliver_person in restaurant.deliveryperson_set.all%}
+        <tr>
+            <td align='center' nowrap>{{ deliver_person }}</td>
+            <td align='center' nowrap><a href="{% url 'manager:delivery_person_salary_change' deliver_person.id %}">${{ deliver_person.salary | floatformat:2 }}</a></td>
+            <td align='center' nowrap>{{ deliver_person.delivery_set.all | length }}</td>
+            <!-- <td align='center' nowrap>TODO</td> -->
+            <td align='center' nowrap>{{ deliver_person.warnings }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</ul>
+{% else %}
+<p align=center>No Delivery People</p>
+{% endif %}
+<br></br>
+
+<h2 align='center'>Salespeople</h2>
+{% if restaurant.salesperson_set.all is not empty %}
+<ul>
+    
+    <table border="1" cellspacing="0" cellpadding="4" width="700" align="center">
+        <tr>
+            <td align='center' nowrap>Name</td>
+            <td align='center' nowrap>Salary</td>
+            <td align='center' nowrap>Commission</td>
+            <td align='center' nowrap>Purchases</td>
+            <!-- <td align='center' nowrap>Score</td> -->
+            <td align='center' nowrap>Warnings</td>
+        </tr>
+        {% for salesperson in restaurant.salesperson_set.all%}
+        <tr>
+            <td align='center' nowrap>{{ salesperson }}</td>
+            <td align='center' nowrap>${{ salesperson.salary | floatformat:2 }} </td>
+            <td align='center' nowrap><a href="{% url 'salesperson:edit_commission' salesperson.id %}">{{ salesperson.commission | floatformat:2 }}</a></td>
+            <td align='center' nowrap>{{ salesperson.purchase_set.all | length }}</td>
+            <!-- <td align='center' nowrap>TODO</td> -->
+            <td align='center' nowrap>{{ salesperson.warnings }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</ul>
+{% else %}
+<p align=center>No Cooks</p>
+{% endif %}
+
+{% endblock content %}

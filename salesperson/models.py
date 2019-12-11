@@ -8,8 +8,14 @@ class Salesperson(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
     ssn = models.CharField(max_length=9)
+
     salary = models.FloatField(
         validators=[MinValueValidator(0.01)],
+    )
+    
+    commission = models.FloatField(
+        validators=[MinValueValidator(0.01), MaxValueValidator(0.70),],
+        default = 0.10
     )
 
     restaurant = models.ForeignKey(
@@ -17,6 +23,8 @@ class Salesperson(models.Model):
         null=True,
         on_delete=True,
     )
+
+    warnings = models.PositiveIntegerField(validators = [MaxValueValidator(3)], default = 0)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

@@ -26,6 +26,8 @@ urlpatterns = [
                         namespace='customer')),
     re_path('', include(('delivery_person.urls', 'delivery_person'),
                         namespace='delivery_person')),
+    re_path('', include(('item.urls', 'item'),
+                        namespace='item')),
     re_path('', include(('manager.urls', 'manager'),
                         namespace='manager')),
     re_path('', include(('ratings.urls', 'ratings'),

@@ -49,6 +49,8 @@ def _add_new_dish(name, price, items, cook_id):
         new_dish.items.add(item)
 
     new_dish.save()
+    restaurant.dish_set.add(new_dish)
+    restaurant.save()
 
     restaurant.dish_set.add(new_dish)
     restaurant.save()
