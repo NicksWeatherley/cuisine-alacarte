@@ -52,6 +52,9 @@ def _add_new_dish(name, price, items, cook_id):
     restaurant.dish_set.add(new_dish)
     restaurant.save()
 
+    restaurant.dish_set.add(new_dish)
+    restaurant.save()
+
 
 def get_dishes_to_remove(request, cook_id):
     form = RemoveDishForm(request.user, request.POST)
@@ -66,9 +69,4 @@ def get_dishes_to_remove(request, cook_id):
 
 
 def _remove_dishes(dishes):
-    # for form_dish in dishes:
-    #     dish = Dish.objects.all()[int(form_dish.id) - 1]
-    #     dish.delete()
     dishes.delete()
-
-
