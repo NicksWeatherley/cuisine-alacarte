@@ -24,6 +24,8 @@ class Salesperson(models.Model):
         on_delete=True,
     )
 
+    warnings = models.PositiveIntegerField(validators = [MaxValueValidator(3)], default = 0)
+
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
