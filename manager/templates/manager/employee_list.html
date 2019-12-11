@@ -4,7 +4,6 @@
 <h2 align='center'>Cooks</h2>
 {% if restaurant.cook_set.all is not empty %}
 <ul>
-
     <table border="1" cellspacing="0" cellpadding="4" width="700" align="center">
         <tr>
             <td align='center' nowrap>Name</td>
@@ -16,7 +15,7 @@
         {% for cook in  restaurant.cook_set.all%}
         <tr>
             <td align='center' nowrap>{{ cook }}</td>
-            <td align='center' nowrap>${{ cook.salary | floatformat:2 }} </td>
+            <td align='center' nowrap><a href="{% url 'manager:cook_salary_change' cook.id %}">${{ cook.salary | floatformat:2 }}</a></td>
             <td align='center' nowrap>{{ cook.dish_set.all | length }}</td>
             <td align='center' nowrap>TODO</td>
             <td align='center' nowrap>{{ cook.warnings }}</td>
@@ -44,7 +43,7 @@
         {% for deliver_person in restaurant.deliveryperson_set.all%}
         <tr>
             <td align='center' nowrap>{{ deliver_person }}</td>
-            <td align='center' nowrap>${{ delivery_person.salary | floatformat:2 }} </td>
+            <td align='center' nowrap><a href="{% url 'manager:delivery_person_salary_change' deliver_person.id %}">${{ deliver_person.salary | floatformat:2 }}</a></td>
             <td align='center' nowrap>{{ deliver_person.delivery_set.all | length }}</td>
             <td align='center' nowrap>TODO</td>
             <td align='center' nowrap>{{ delivery_person.warnings }}</td>
